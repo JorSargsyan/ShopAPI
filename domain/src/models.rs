@@ -3,9 +3,11 @@
 #![allow(unused)]
 #![allow(clippy::all)]
 
-use chrono::NaiveDateTime;
-use diesel::Queryable;
+use diesel::prelude::{Insertable, Queryable};
 use serde::{Deserialize, Serialize};
+
+use crate::schema::users;
+
 #[derive(Queryable, Debug)]
 pub struct Credential {
     pub id: i32,
@@ -31,23 +33,23 @@ pub struct Role {
     pub title: String,
 }
 
-#[derive(Queryable, Debug)]
+#[derive(Insertable, Deserialize, Queryable, Debug, Serialize)]
+#[serde(crate = "rocket::serde")]
+#[diesel(table_name = users)]
 pub struct User {
     pub id: i32,
     pub name: String,
     pub lastname: String,
     pub email: String,
-    pub created_at: NaiveDateTime,
+    pub created_at: String,
     pub role_id: i32,
     pub credential_id: i32,
 }
 
-#[derive(Serialize, Debug)]
-pub struct UserResponse {
-    pub id: i32,
+#[derive(Deserialize)]
+pub struct NewUser {
     pub name: String,
     pub lastname: String,
     pub email: String,
-    pub created_at: NaiveDateTime,
     pub role_id: i32,
 }

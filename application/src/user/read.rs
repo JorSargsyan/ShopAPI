@@ -36,7 +36,7 @@ pub fn list_users() -> Vec<User> {
         .select(users::all_columns)
         .load::<User>(&mut establish_connection())
     {
-        Ok(mut users) => users,
+        Ok(users) => users,
         Err(err) => match err {
             _ => {
                 panic!("Database error - {}", err);

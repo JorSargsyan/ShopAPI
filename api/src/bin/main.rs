@@ -6,6 +6,10 @@ use api::users_handler;
 fn rocket() -> _ {
     rocket::build().mount(
         "/api",
-        routes![users_handler::list_users, users_handler::list_user_by_id],
+        routes![
+            users_handler::list_users,
+            users_handler::list_user_by_id,
+            users_handler::create_user
+        ],
     )
 }
