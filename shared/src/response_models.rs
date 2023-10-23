@@ -1,10 +1,10 @@
-use domain::models::User;
+use domain::models::UserResponse;
 use rocket::serde::Serialize;
 #[derive(Serialize)]
 pub enum ResponseBody {
     Message(String),
-    User(User),
-    Users(Vec<User>),
+    User(UserResponse),
+    Users(Vec<UserResponse>),
 }
 #[derive(Serialize)]
 #[serde(crate = "rocket::serde")]

@@ -1,8 +1,8 @@
-use shared::response_models::{Response, ResponseBody};
-use domain::models::{User};
-use rocket::{get};
-use rocket::response::status::{NotFound};
+use domain::models::UserResponse;
+use rocket::get;
+use rocket::response::status::NotFound;
 use rocket::serde::json::Json;
+use shared::response_models::{Response, ResponseBody};
 
 #[get("/")]
 pub fn list_users() -> String {
