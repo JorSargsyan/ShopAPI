@@ -10,3 +10,5 @@ rocket = { version = "0.5.0-rc.2", features = ["json"] }
 diesel = { version = "2.0.0", features = ["postgres"] }
 serde = { version = "1.0.147", features = ["derive"] }
 chrono = {version = "0.4.31",features = ["serde"]}
+schemars = "0.8.15"
+

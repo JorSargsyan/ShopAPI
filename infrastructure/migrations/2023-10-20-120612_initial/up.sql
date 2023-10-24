@@ -14,9 +14,9 @@ CREATE TABLE users (
     name TEXT NOT NULL,
     lastname TEXT NOT NULL,
     email TEXT NOT NULL,
-    created_at TEXT NOT NULL, 
     role_id INT NOT NULL,
     credential_id INT NOT NULL,
+    created_at TEXT NOT NULL, 
     CONSTRAINT fk_role FOREIGN KEY(role_id) REFERENCES roles(id),
     CONSTRAINT fk_credential FOREIGN KEY(credential_id) REFERENCES credentials(id)
 );

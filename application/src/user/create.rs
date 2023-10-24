@@ -9,13 +9,13 @@ pub fn create_user(form_data: Json<NewUser>) -> Created<String> {
     let new_user = form_data.into_inner();
 
     let user = User {
+        id: None,
         name: new_user.name,
         lastname: new_user.lastname,
         email: new_user.email,
         role_id: new_user.role_id,
-        id: 10,
-        created_at: String::from("10"),
         credential_id: 10,
+        created_at: String::from("10"),
     };
 
     match diesel::insert_into(users::table)

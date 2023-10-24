@@ -3,10 +3,11 @@
 #![allow(unused)]
 #![allow(clippy::all)]
 
-use diesel::prelude::{Insertable, Queryable};
+use diesel::prelude::{Identifiable, Insertable, Queryable};
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
-use crate::schema::users;
+use crate::schema::{roles, users};
 
 #[derive(Queryable, Debug)]
 pub struct Credential {
@@ -27,29 +28,41 @@ pub struct RolePermission {
     pub permission_id: Option<i32>,
 }
 
-#[derive(Queryable, Debug)]
+#[derive(Queryable, Debug, Identifiable, Serialize, Deserialize, Insertable)]
+#[diesel(primary_key(id))]
+#[serde(crate = "rocket::serde")]
+#[diesel(table_name = roles)]
 pub struct Role {
-    pub id: i32,
+    #[diesel(deserialize_as = i32)]
+    pub id: Option<i32>,
     pub title: String,
 }
 
-#[derive(Insertable, Deserialize, Queryable, Debug, Serialize)]
+#[derive(Queryable, Debug, Identifiable, Serialize, Deserialize, Insertable)]
+#[diesel(primary_key(id))]
 #[serde(crate = "rocket::serde")]
 #[diesel(table_name = users)]
 pub struct User {
-    pub id: i32,
+    #[diesel(deserialize_as = i32)]
+    pub id: Option<i32>,
     pub name: String,
     pub lastname: String,
     pub email: String,
-    pub created_at: String,
     pub role_id: i32,
     pub credential_id: i32,
+    pub created_at: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, JsonSchema)]
 pub struct NewUser {
     pub name: String,
     pub lastname: String,
     pub email: String,
     pub role_id: i32,
+}
+
+#[derive(Deserialize, JsonSchema)]
+pub struct NewRole {
+    pub permission_ids: Vec<i32>,
+    pub title: String,
 }
