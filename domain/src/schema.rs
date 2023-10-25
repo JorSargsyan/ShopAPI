@@ -17,8 +17,8 @@ diesel::table! {
 diesel::table! {
     role_permissions (id) {
         id -> Int4,
-        role_id -> Nullable<Int4>,
-        permission_id -> Nullable<Int4>,
+        role_id -> Int4,
+        permission_id -> Int4,
     }
 }
 

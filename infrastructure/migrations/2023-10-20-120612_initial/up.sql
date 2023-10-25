@@ -34,8 +34,8 @@ CREATE TABLE permissions (
 
 CREATE TABLE role_permissions (
     id  SERIAL PRIMARY KEY,
-    role_id INT,
-    permission_id INT,
+    role_id INT NOT NULL,
+    permission_id INT NOT NULL,
     CONSTRAINT fk_role FOREIGN KEY(role_id) REFERENCES roles(id),
     CONSTRAINT fk_permission FOREIGN KEY(permission_id) REFERENCES permissions(id)
 )
