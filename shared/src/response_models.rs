@@ -9,6 +9,7 @@ pub enum ResponseBody {
     User(User),
     Permissions(Vec<Permission>),
     Roles(Vec<Role>),
+    Role(Role),
     Users(Vec<User>),
 }
 #[derive(Serialize)]

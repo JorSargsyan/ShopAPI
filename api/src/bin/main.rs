@@ -25,6 +25,7 @@ fn rocket() -> _ {
                 users_handler::list_user_by_id,
                 users_handler::create_user,
                 roles_handler::list_roles,
+                roles_handler::update_role,
                 roles_handler::create_role,
                 permissions_handler::create_permission,
                 permissions_handler::list_permissions

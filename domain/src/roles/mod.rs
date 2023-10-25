@@ -24,7 +24,14 @@ pub struct Role {
 }
 
 #[derive(Deserialize, JsonSchema)]
-pub struct NewRole {
+pub struct CreateRoleRequest {
+    pub permission_ids: Vec<i32>,
+    pub title: String,
+}
+
+#[derive(Deserialize, JsonSchema)]
+pub struct UpdateRoleRequest {
+    pub id: i32,
     pub permission_ids: Vec<i32>,
     pub title: String,
 }

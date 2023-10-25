@@ -1,15 +1,15 @@
-use application::role::{create, read};
-use domain::roles::{NewRole, Role};
+use application::role;
+use domain::roles::{CreateRoleRequest, Role, UpdateRoleRequest};
 use revolt_rocket_okapi::openapi;
 use rocket::response::status::Created;
 use rocket::serde::json::Json;
-use rocket::{get, post};
+use rocket::{get, post, put};
 use shared::response_models::{Response, ResponseBody};
 
 #[openapi]
 #[get("/roles")]
 pub fn list_roles() -> String {
-    let roles: Vec<Role> = read::list_roles();
+    let roles: Vec<Role> = role::list_roles();
     let response: Response = Response {
         body: ResponseBody::Roles(roles),
     };
@@ -19,6 +19,17 @@ pub fn list_roles() -> String {
 
 #[openapi]
 #[post("/role", format = "json", data = "<role>")]
-pub fn create_role(role: Json<NewRole>) -> Created<String> {
-    create::create_role(role)
+pub fn create_role(role: Json<CreateRoleRequest>) -> Created<String> {
+    role::create_role(role)
+}
+
+#[openapi]
+#[put("/role", format = "json", data = "<role>")]
+pub fn update_role(role: Json<UpdateRoleRequest>) -> String {
+    let new_role = role::update_role(role);
+    let response: Response = Response {
+        body: ResponseBody::Role(new_role),
+    };
+
+    serde_json::to_string(&response).unwrap()
 }
