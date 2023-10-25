@@ -7,8 +7,17 @@ use serde::{Deserialize, Serialize};
 
 use crate::schema::permissions;
 
-#[derive(Queryable, Debug)]
+#[derive(Queryable, Debug, Identifiable, Serialize, Deserialize, Insertable)]
+#[diesel(primary_key(id))]
+#[serde(crate = "rocket::serde")]
+#[diesel(table_name = permissions)]
 pub struct Permission {
-    pub id: i32,
+    #[diesel(deserialize_as = i32)]
+    pub id: Option<i32>,
+    pub title: String,
+}
+
+#[derive(Deserialize, JsonSchema)]
+pub struct NewPermission {
     pub title: String,
 }

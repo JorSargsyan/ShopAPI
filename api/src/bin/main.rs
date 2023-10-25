@@ -1,5 +1,6 @@
 #[macro_use]
 extern crate rocket;
+use api::permissions_handler;
 use api::roles_handler;
 use api::users_handler;
 use revolt_rocket_okapi::{
@@ -25,6 +26,8 @@ fn rocket() -> _ {
                 users_handler::create_user,
                 roles_handler::list_roles,
                 roles_handler::create_role,
+                permissions_handler::create_permission,
+                permissions_handler::list_permissions
             ],
         )
         .mount("/swagger", make_swagger_ui(&get_docs()))

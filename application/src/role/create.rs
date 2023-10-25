@@ -16,7 +16,7 @@ pub fn create_role(form_data: Json<NewRole>) -> Created<String> {
         .values(&role)
         .get_result::<Role>(&mut establish_connection())
     {
-        Ok(role) => Created::new(""),
+        Ok(_) => Created::new(""),
         Err(err) => match err {
             _ => {
                 panic!("Database error - {}", err);

@@ -1,3 +1,4 @@
+use domain::permissions::Permission;
 use domain::roles::Role;
 use domain::users::User;
 use rocket::serde::Serialize;
@@ -6,6 +7,7 @@ use rocket::serde::Serialize;
 pub enum ResponseBody {
     Message(String),
     User(User),
+    Permissions(Vec<Permission>),
     Roles(Vec<Role>),
     Users(Vec<User>),
 }
