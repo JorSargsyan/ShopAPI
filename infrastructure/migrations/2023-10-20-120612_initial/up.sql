@@ -3,6 +3,11 @@ CREATE TABLE roles (
     title TEXT NOT NULL
 );
 
+INSERT INTO roles (title)
+VALUES
+('SuperAdmin'),
+('User');
+
 CREATE TABLE credentials (
     id SERIAL PRIMARY KEY,
     password TEXT NOT NULL
