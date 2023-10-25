@@ -1,5 +1,5 @@
 use diesel::prelude::*;
-use domain::models::{NewUser, User};
+use domain::users::{NewUser, User};
 use infrastructure::establish_connection;
 use rocket::{response::status::Created, serde::json::Json};
 use shared::response_models::{Response, ResponseBody};

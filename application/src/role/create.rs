@@ -1,5 +1,5 @@
 use diesel::prelude::*;
-use domain::models::{NewRole, Role};
+use domain::roles::{NewRole, Role};
 use infrastructure::establish_connection;
 use rocket::{response::status::Created, serde::json::Json};
 

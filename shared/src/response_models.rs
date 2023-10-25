@@ -1,5 +1,7 @@
-use domain::models::{Role, User};
+use domain::roles::Role;
+use domain::users::User;
 use rocket::serde::Serialize;
+
 #[derive(Serialize)]
 pub enum ResponseBody {
     Message(String),

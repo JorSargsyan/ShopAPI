@@ -1,5 +1,5 @@
 use application::user::{create, read};
-use domain::models::{NewUser, User};
+use domain::users::{NewUser, User};
 use revolt_rocket_okapi::openapi;
 use rocket::response::status::{Created, NotFound};
 use rocket::serde::json::Json;

@@ -1,5 +1,5 @@
 use diesel::prelude::*;
-use domain::models::Role;
+use domain::roles::Role;
 use infrastructure::establish_connection;
 
 pub fn list_roles() -> Vec<Role> {

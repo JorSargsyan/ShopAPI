@@ -1,5 +1,5 @@
 use application::role::{create, read};
-use domain::models::{NewRole, Role};
+use domain::roles::{NewRole, Role};
 use revolt_rocket_okapi::openapi;
 use rocket::response::status::Created;
 use rocket::serde::json::Json;
