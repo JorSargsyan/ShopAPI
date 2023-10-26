@@ -27,6 +27,7 @@ fn rocket() -> _ {
                 roles_handler::list_roles,
                 roles_handler::update_role,
                 roles_handler::create_role,
+                roles_handler::remove_role,
                 permissions_handler::create_permission,
                 permissions_handler::list_permissions
             ],
