@@ -36,6 +36,6 @@ CREATE TABLE role_permissions (
     id  SERIAL PRIMARY KEY,
     role_id INT NOT NULL,
     permission_id INT NOT NULL,
-    CONSTRAINT fk_role FOREIGN KEY(role_id) REFERENCES roles(id),
+    CONSTRAINT fk_role FOREIGN KEY(role_id) REFERENCES roles(id) ON DELETE CASCADE,
     CONSTRAINT fk_permission FOREIGN KEY(permission_id) REFERENCES permissions(id)
 )
