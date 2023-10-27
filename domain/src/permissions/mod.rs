@@ -18,6 +18,12 @@ pub struct Permission {
 }
 
 #[derive(Deserialize, JsonSchema)]
-pub struct NewPermission {
+pub struct CreatePermissionRequest {
     pub title: String,
+}
+
+#[derive(Deserialize, JsonSchema)]
+pub struct UpdatePermissionRequest {
+    pub title: String,
+    pub id: i32,
 }

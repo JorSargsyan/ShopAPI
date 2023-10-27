@@ -7,6 +7,7 @@ use rocket::serde::Serialize;
 pub enum ResponseBody {
     Message(String),
     User(User),
+    Permission(Permission),
     Permissions(Vec<Permission>),
     Roles(Vec<Role>),
     Role(Role),

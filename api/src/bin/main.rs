@@ -29,7 +29,9 @@ fn rocket() -> _ {
                 roles_handler::create_role,
                 roles_handler::remove_role,
                 permissions_handler::create_permission,
-                permissions_handler::list_permissions
+                permissions_handler::list_permissions,
+                permissions_handler::update_permission,
+                permissions_handler::remove_permission
             ],
         )
         .mount("/swagger", make_swagger_ui(&get_docs()))
