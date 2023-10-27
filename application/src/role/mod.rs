@@ -42,6 +42,10 @@ pub fn create_role(form_data: Json<CreateRoleRequest>) -> Created<String> {
         .get_result::<Role>(&mut establish_connection())
     {
         Ok(role) => {
+            if new_role.permission_ids.is_empty() {
+                return Created::new("");
+            }
+
             let mut role_perms: Vec<RolePermission> = vec![];
 
             for item in new_role.permission_ids.into_iter() {
